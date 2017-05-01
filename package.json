@@ -1,0 +1,26 @@
+{
+  "name": "ttt",
+  "version": "1.0.0",
+  "description": "tic tac toe",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha text.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eshifrin/ttt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eshifrin/ttt/issues"
+  },
+  "homepage": "https://github.com/eshifrin/ttt#readme",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "inquirer": "^3.0.6",
+    "mocha": "^3.3.0",
+    "prompt": "^1.0.0"
+  }
+}
