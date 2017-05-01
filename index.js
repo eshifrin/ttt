@@ -29,7 +29,7 @@ prompt.get('Click anything when ready', function(err, result) {
       }
     }
 
-    while (nowinner) {
+    while (true) {
       //prompt player 1 for a spot
         //map it to a spot and toggle that
           //check to see if the game is over, if it is say which player won of it's a tie
@@ -37,6 +37,15 @@ prompt.get('Click anything when ready', function(err, result) {
           //otherwise switch the player and the turn
 
       //
+
+      let promptTxt = player + ' turn';
+
+
+      ttt.toggleBoard(newBoard, response, letters[player]);
+      if (ttt.checkForWinner(newBoard, letter)) {
+        console.log(player, 'won')
+        return;
+      }
 
     }
     
