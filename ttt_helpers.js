@@ -1,59 +1,81 @@
-module.exports.newboard = 
-[['-','-','-'],
-['-','-','-'],
-['-','-','-']];
 
 
-module.exports.guideBoard = 
-[[1,2,3],
-[4,5,6],
-[7,8,9]];
 
-
-module.exports.emptyBoard = function() {
-  return this.newboard.slice();
+module.exports.guideBoard = {
+  board: [[1,2,3],
+          [4,5,6],
+          [7,8,9]]
 }
 
-module.exports.drawBoard = (board) => {
-  let drawing = ''
 
-  board.forEach(row => {
-    drawing += '\n'
-    row.forEach(space => {
-      drawing += ' ' + space;
+module.exports.tBoard = function() {
+  this.board = [['-','-','-'],
+                ['-','-','-'],
+                ['-','-','-']];
+
+  
+  this.validMoves = {
+    1: true,
+    2: true,
+    3: true,
+    4: true,
+    5: true,
+    6: true,
+    7: true,
+    8: true,
+    9: true
+  }  
+
+}
+
+this.tBoard.prototype = {
+  draw: function() {
+    let drawing = ''
+
+    this.board.forEach(row => {
+      drawing += '\n'
+      row.forEach(space => {
+        drawing += ' ' + space;
+      })
     })
-  })
 
-  return drawing;
-}
+    return drawing;
+  },
+  toggle: function(position, letter){
+    let row = Math.ceil(position / 3) - 1;
+    let col = Math.ceil((position - 1) % 3);
+    this.board[row][col] = letter;
+    delete this.validMoves[position];
+  },
+  hasWinner: function(letter) {
+    for (var i = 0; i <= 2; i++) {
+      if (this.board[i].every(e => e === letter)) {
+        return true;
+      }
+      if (this.board[0][i] === letter && 
+          this.board[1][i] === letter && 
+          this.board[2][i] === letter) {
+        return true;
+      }
+    }
 
-
-module.exports.toggleBoard = (board, position, letter) => {
-  let row = Math.ceil(position / 3) - 1;
-  let col = Math.ceil((position - 1) % 3);
-  board[row][col] = letter;
-}
-
-
-
-module.exports.checkForWinner = (board, letter) => {
-  for (var i = 0; i <= 2; i++) {
-    if (board[i].every(e => e === letter)) {
+    if (this.board[0][0] === letter && 
+        this.board[1][1] === this.letter && 
+        this.board[2][2] === letter) {
       return true;
     }
-    if (board[0][i] === letter && board[1][i] === letter && board[2][i] === letter) {
+
+    if (this.board[2][0] === letter && 
+        this.board[1][1] === letter && 
+        this.board[0][2] === letter) {
       return true;
     }
-  }
-
-  if (board[0][0] === letter && board[1][1] === letter && board[2][2] === letter) {
-    return true;
-  }
-
-  if (board[2][0] === letter && board[1][1] === letter && board[0][2] === letter) {
-    return true;
-  }
 
   return false;
+  },
+  hasTie: function() {
+    return !Object.keys(this.validMoves).length;
+  }
 }
+
 

@@ -4,7 +4,7 @@
   "description": "tic tac toe",
   "main": "index.js",
   "scripts": {
-    "test": "mocha text.js",
+    "test": "mocha test.js",
     "start": "node index.js"
   },
   "repository": {
