@@ -1,19 +1,14 @@
-
-
-
 module.exports.guideBoard = {
   board: [[1,2,3],
           [4,5,6],
           [7,8,9]]
 }
 
-
 module.exports.tBoard = function() {
   this.board = [['-','-','-'],
                 ['-','-','-'],
                 ['-','-','-']];
 
-  
   this.validMoves = {
     1: true,
     2: true,

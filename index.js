@@ -4,7 +4,7 @@ let board = new ttt.tBoard();
 let player = 'Player 1';
 
 
-function nextPrompt(player) {
+let nextPrompt = (player) => {
   let property = {
     name: 'spot',
     message: `${player} choose a spot`,
