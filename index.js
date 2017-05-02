@@ -1,5 +1,5 @@
-var prompt = require('prompt');
-var ttt = require('./ttt_helpers.js')
+let prompt = require('prompt');
+let ttt = require('./ttt_helpers.js')
 let board = new ttt.tBoard();
 let player = 'Player 1';
 
@@ -15,14 +15,11 @@ let nextPrompt = (player) => {
   }
   
   prompt.get(property, function(err, result) {
-    console.log(err)
-    console.log(result)
-
     board.toggle(result.spot, letters[player]);
     console.log('New Board: \n', board.draw());
 
     if (board.hasTie()) {
-      console.log('Tie game!')
+      console.log('Tie game!');
       return;
     }
     if (board.hasWinner(letters[player])) {
@@ -30,7 +27,7 @@ let nextPrompt = (player) => {
       return;
     } else {
       player = playerToggle();
-      nextPrompt(player)
+      nextPrompt(player);
     }
   })
 }

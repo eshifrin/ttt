@@ -25,10 +25,10 @@ module.exports.tBoard = function() {
 
 this.tBoard.prototype = {
   draw: function() {
-    let drawing = ''
+    let drawing = '';
 
     this.board.forEach(row => {
-      drawing += '\n'
+      drawing += '\n';
       row.forEach(space => {
         drawing += ' ' + space;
       })
